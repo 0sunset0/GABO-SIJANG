@@ -1,42 +1,26 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>전통시장의 자세한 정보</title>
-  <link href="/static/css/bootstrap.min.css" rel="stylesheet">
-  <link href="/static/css/starter-template.css" rel="stylesheet">
-  <script src="/static/js/jquery.min.js"></script>
-  <script src="/static/js/bootstrap.min.js"></script>
-</head>
 
-<body>
-  <h1>가좌시장</h1>
-  <div>
-    <iframe class="embed-responsive-item" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3165.5848608411134!2d126.68158941530949!3d37.49412177981153!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357b7ebcc443519f%3A0x58a7856808c2b759!2z7J247LKc6rCA7KKM7Iuc7J6l!5e0!3m2!1sko!2skr!4v1652534593529!5m2!1sko!2skr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-  </div>
-  
-  <div class="card" style="width: 18rem;">
-    <div class="card-body">
-      <h5 class="card-title">떡볶이가 맛있어요</h5>
-      <p class="card-text">만족합니다^^.</p>
-    </div>
-  </div>
-  <div class="card" style="width: 18rem;">
-    <div class="card-body">
-      <h5 class="card-title">떡볶이가 맛있어요</h5>
-      <p class="card-text">만족합니다^^.</p>
-    </div>
-  </div>
-  <div class="card" style="width: 18rem;">
-    <div class="card-body">
-      <h5 class="card-title">떡볶이가 맛있어요</h5>
-      <p class="card-text">만족합니다^^.</p>
-    </div>
-  </div>
+{% extends 'base.html' %}
 
-  <div>
+{% block head %}
+    <title>전통시장의 자세한 정보</title>
+{% endblock %}
+
+{%block body %}
+    <h1>{{market.name}}</h1>
+    <div>
+    <iframe class="{{market.map-link}}" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+
+    {% for review in reviews %}
+        <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">{{review.title}}</h5>
+            <p class="card-text">{{review.content}}</p>
+        </div>
+        </div>
+    {%endfor%}
+    <div>
     <button type="button" class="btn btn-outline-dark" onclick="location.href='/create/market-name';">리뷰 추가</button>
-  </div>
-
-</body>
-</html>
+    </div>
+    
+{% endblock %}

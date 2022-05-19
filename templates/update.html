@@ -1,37 +1,29 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>리뷰 수정하기</title>
-  <link href="/static/css/bootstrap.min.css" rel="stylesheet">
-  <link href="/static/css/starter-template.css" rel="stylesheet">
-  <script src="/static/js/jquery.min.js"></script>
-  <script src="/static/js/bootstrap.min.js"></script>
-</head>
+{% extends 'base.html' %}
 
-<body>
+{% block head %}
+<title>리뷰 수정하기</title>
+{% endblock %}
 
-  <div class="card" style="width: 18rem;">
-    <div class="card-body">
-      <h5 class="card-title">방문한 전통시장에 대해 리뷰를 남겨주세요</h5>
-      <p class="card-text">
-        <form action="/detail/<market_id>" method="post">
-            <div class="form-group">
-                <input type="text" class="form-control" id="formGroupExampleInput1" placeholder="제목">
-            </div>
-            <div class="form-group">
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="설명"></textarea>
-            </div>
-            <div class="form-group">
-              <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="평점">
-            </div>
-            <div class="form-group">
-                <button type="button" class="btn btn-outline-dark" onclick="location.href='/detail/<market>';">리뷰 수정</button>
-            </div>
-          </form>
-      </p>
+{%block body %}
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+        <h5 class="card-title">방문한 전통시장에 대해 리뷰를 남겨주세요</h5>
+        <p class="card-text">
+            <form action="/detail/<market_id>" method="post">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="title" placeholder="제목">
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" id="contnet" rows="3" placeholder="내용"></textarea>
+                </div>
+                <div class="form-group">
+                <input type="text" class="form-control" id="score" placeholder="평점">
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-outline-dark" onclick="location.href='/detail/<market>';">리뷰 ?��?��</button>
+                </div>
+            </form>
+        </p>
+        </div>
     </div>
-  </div>
-      
-</body>
-</html>
+{% endblock %}

@@ -1,16 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>전통시장 리스트</title>
-  <link href="/static/css/bootstrap.min.css" rel="stylesheet">
-  <link href="/static/css/starter-template.css" rel="stylesheet">
-  <script src="/static/js/jquery.min.js"></script>
-  <script src="/static/js/bootstrap.min.js"></script>
-</head>
+{% extends 'base.html' %}
 
-<body>
-    <div><h2>지역명</h2></div>
+{% block head %}
+<title>전통시장 리스트</title>
+{% endblock %}
+
+{%block body %}
+<div><h2>{{area}}</h2></div>
     <div>
         <table class="table">
             <thead>
@@ -19,31 +14,15 @@
                 <th scope="col">시장 주소</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <th scope="row"><a href="/detail/<가좌시장>">가좌시장</a></th>
-                <td>인천 서구 원적로96번길 26 가좌프라자쇼핑</td>
-              </tr>
-              <tr>
-                <th scope="row"><a href="/detail/<강남시장>">강남 시장</a></th>
-                <td>인천 서구 석남동 595</td>
-              </tr>
-              <tr>
-                <th scope="row"><a href="/detail/<거북시장>">거북시장</a></th>
-                <td>인천 서구 거북로 115</td>
-              </tr>
-              <tr>
-                <th scope="row"><a href="/detail/<정서진중앙시장>">정서진 중앙 시장</a></th>
-                <td>인천 서구 원창로239번길 11</td>
-              </tr>
-              <tr>
-                <th scope="row"><a href="/detail/<축산물시장>">축산물 시장</a></th>
-                <td>인천 서구 가좌동 516</td>
-              </tr>
-            </tbody>
+            {% for market in markets %}
+                <tbody>
+                <tr>
+                    <th scope="row"><a href="/detail/<가좌시장>">{{market.name}}</a></th>
+                    <td>{{market.address}}</td>
+                </tr>
+                </tbody>
+            {%endfor%}
           </table>
     </div>
-    
-      
-</body>
-</html>
+
+{% endblock %}
