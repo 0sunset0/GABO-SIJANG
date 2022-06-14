@@ -5,25 +5,31 @@
 {% endblock %}
 
 {%block body %}
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-        <h5 class="card-title">방문한 전통시장에 대해 리뷰를 남겨주세요</h5>
-        <p class="card-text">
-            <form action="/detail/<market_id>" method="post">
-                <div class="form-group">
-                    <input type="text" class="form-control" id="title" placeholder="제목">
-                </div>
-                <div class="form-group">
-                    <textarea class="form-control" id="contnet" rows="3" placeholder="내용"></textarea>
-                </div>
-                <div class="form-group">
-                <input type="text" class="form-control" id="score" placeholder="평점">
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-outline-dark" onclick="location.href='/detail/<market>';">리뷰 ?��?��</button>
-                </div>
-            </form>
-        </p>
-        </div>
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">리뷰를 수정해주세요!</h5>
+      <p class="card-text">
+        {% if review %}
+        <form action="{{ url_for('update', review_id=review.id) }}" method="POST">
+            <div class="form-group">
+              <input type="text" class="form-control" id="title" name="title" value={{review.title}}>
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" id="content" name="content" value={{review.content}}>
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" id="score" name="score" value={{review.score}}>
+            </div>
+            <div class="form-group">
+              <input type="password" class="form-control" id="password" name="password" placeholder="비밀번호">
+            </div>
+            <div class="form-group">
+              <a href = "/"><button type="submit" class="btn btn-outline-dark">리뷰 수정</button></a>
+            </div>
+          </form>
+          <a href = {{ url_for('delete',  review_id=review.id) }}><button type="submit" class="btn btn-outline-dark">리뷰 삭제</button></a>
+        {% endif %}
+      </p>
     </div>
+  </div>
 {% endblock %}

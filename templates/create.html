@@ -9,20 +9,25 @@
     <div class="card-body">
       <h5 class="card-title">방문한 전통시장에 대해 리뷰를 남겨주세요</h5>
       <p class="card-text">
-        <form action="/detail/<market_id>" method="post">
+        {% if market %}
+        <form action="{{ url_for('create', market_id=market.id) }}" method="POST" >
             <div class="form-group">
-                <input type="text" class="form-control" id="title" placeholder="제목">
+              <input type="text" class="form-control" id="title" name="title" placeholder="제목">
             </div>
             <div class="form-group">
-                <textarea class="form-control" id="contnet" rows="3" placeholder="내용"></textarea>
+              <input type="text" class="form-control" id="content" name="content" placeholder="내용">
             </div>
             <div class="form-group">
-              <input type="text" class="form-control" id="score" placeholder="평점">
+              <input type="text" class="form-control" id="score" name="score" placeholder="평점">
             </div>
             <div class="form-group">
-                <button type="submit" class="btn btn-outline-dark" onclick="location.href='/detail/<market>';">리뷰 작성</button>
+              <input type="password" class="form-control" id="password" name="password" placeholder="비밀번호">
+            </div>
+            <div class="form-group">
+              <a href = {{ url_for('detail',  market_id=market.id) }}><button type="submit" class="btn btn-outline-dark">리뷰 작성</button></a>
             </div>
           </form>
+        {% endif %}
       </p>
     </div>
   </div>

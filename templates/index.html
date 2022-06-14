@@ -1,18 +1,18 @@
 {% extends 'base.html' %}
 
 {% block head %}
-<title>전통시장 위치 알아보기</title>
+<title>우리의 전통시장</title>
 {% endblock %}
 
 {%block body %}
 <h1>내 주변 시장 정보를 확인하고 리뷰를 작성하세요! </h1>
 <div>
-  <button type="button" class="btn btn-outline-dark" onclick="location.href='/market-list/경기도';">경기도</button>
+  <a href = {{ url_for('market_list', area_id=0) }}><button type="button" class="btn btn-outline-dark">경기도</button></a>
 </div>
 <div>
-  <button type="button" class="btn btn-outline-dark" onclick="location.href='/market-list/서울';">서울</button>
+  <a href = {{ url_for('market_list', area_id=1) }}><button type="button" class="btn btn-outline-dark">서울</button></a>
 </div>
 <div>
-  <button type="button" class="btn btn-outline-dark" onclick="location.href='/market-list/인천';">인천</button>
+  <a href = {{ url_for('market_list', area_id=2) }}><button type="button" class="btn btn-outline-dark">인천</button></a>
 </div>
 {% endblock %}
