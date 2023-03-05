@@ -1,4 +1,4 @@
-# traditional-market-web
+# ⭐ GaBo-SiJang
 
 전통시장에 대한 정보를 알려주는 웹 사이트
 <br> <br><br>
